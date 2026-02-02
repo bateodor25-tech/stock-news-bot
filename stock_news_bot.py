@@ -4,6 +4,28 @@ import requests
 import json
 from datetime import datetime, timedelta
 import logging
+import threading
+from flask import Flask
+
+# Setup Flask app for Render.com health checks
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return {
+        "status": "running",
+        "bot": "Stock News Telegram Bot",
+        "message": "Bot is active and monitoring stocks!"
+    }
+
+@app.route('/health')
+def health():
+    return {"status": "healthy"}, 200
+
+def run_flask():
+    """Run Flask server in background"""
+    port = int(os.getenv('PORT', 10000))
+    app.run(host='0.0.0.0', port=port, debug=False, use_reloader=False)
 
 # Setup logging
 logging.basicConfig(
@@ -219,5 +241,14 @@ class StockNewsBot:
                 time.sleep(60)  # Wait a minute before retrying
 
 if __name__ == "__main__":
+    # Start Flask web server in background thread (for Render.com)
+    flask_thread = threading.Thread(target=run_flask, daemon=True)
+    flask_thread.start()
+    logger.info("Flask web server started for health checks")
+    
+    # Give Flask a moment to start
+    time.sleep(2)
+    
+    # Start the bot
     bot = StockNewsBot()
     bot.run(interval_minutes=5)
