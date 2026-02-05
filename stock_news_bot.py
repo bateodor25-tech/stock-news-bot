@@ -42,7 +42,7 @@ class StockNewsBot:
         self.telegram_chat_id = os.getenv('TELEGRAM_CHAT_ID')
         
         # Your watchlist
-        self.stocks = ['MSFT', 'ORCL', 'META', 'AMZN', 'ALAB', 'NBIS', 'LAES', 'BBAI']
+        self.stocks = ['MSFT', 'ORCL', 'META', 'GOOGL', 'MU',]
         
         # Keywords for industry monitoring
         self.keywords = [
@@ -51,7 +51,7 @@ class StockNewsBot:
             'semiconductor', 'chip', 'GPU', 'NVIDIA', 'processor', 'AI accelerator',
             'data center', 'cloud computing', 'AI infrastructure', 'TPU',
             'space', 'satellite', 'rocket', 'SpaceX', 'aerospace',
-            'robotics', 'autonomous', 'automation', 'robot'
+            'robotics', 'autonomous', 'automation', 'robot',' Anthropic', 'Claude'
         ]
         
         # Track sent articles to avoid duplicates
