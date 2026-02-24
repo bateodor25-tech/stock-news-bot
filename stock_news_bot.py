@@ -42,11 +42,11 @@ class StockNewsBot:
         self.telegram_chat_id = os.getenv('TELEGRAM_CHAT_ID')
         
         # Your watchlist
-        self.stocks = ['MSFT', 'ORCL', 'META', 'GOOGL', 'MU',]
+        self.stocks = ['MSFT', 'ORCL', 'META', 'GOOGL', 'APLD','UUUU','ABAT','LAES','BBAI','OPXS','SRFM','ALAB']
         
         # Keywords for industry monitoring
         self.keywords = [
-            'artificial intelligence', 'AI', 'machine learning', 'deep learning',
+            'artificial intelligence','Energy fuels','Richtech robotics','Gemini','Sam altman','BigBear.ai', 'AI', 'machine learning', 'deep learning',
             'neural network', 'LLM', 'generative AI', 'ChatGPT', 'OpenAI',
             'semiconductor', 'chip', 'GPU', 'NVIDIA', 'processor', 'AI accelerator',
             'data center', 'cloud computing', 'AI infrastructure', 'TPU',
